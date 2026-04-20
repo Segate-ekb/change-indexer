@@ -90,12 +90,11 @@ namespace ChangeIndexer
             // 2. Сортировка
             newEntries.Sort(StringComparer.Ordinal);
 
-            // 3. Загрузка старого индекса (если есть)
+            // 3. Загрузка старого индекса (если есть) — уже отсортирован при сохранении
             List<string> oldEntries = null;
             if (File.Exists(indexFile))
             {
                 oldEntries = LoadCidxEntries(indexFile);
-                oldEntries.Sort(StringComparer.Ordinal);
             }
 
             // 4. Сохранение нового индекса (CIDX v1)
@@ -135,7 +134,6 @@ namespace ChangeIndexer
                 ? Array.Empty<string>()
                 : exclusions.Split('|')
                     .Where(s => !string.IsNullOrEmpty(s))
-                    .Select(s => s.ToLowerInvariant())
                     .ToArray();
 
             var list = new List<string>(50000);
@@ -151,14 +149,7 @@ namespace ChangeIndexer
                 if (IsExcluded(relativePath, excludePatterns))
                     continue;
 
-                var sb = new StringBuilder(relativePath.Length + 30);
-                sb.Append(relativePath);
-                sb.Append('\t');
-                sb.Append(fi.Length);
-                sb.Append('\t');
-                sb.Append(fi.LastWriteTime.ToString("yyyyMMddHHmmss"));
-
-                list.Add(sb.ToString());
+                list.Add(string.Concat(relativePath, "\t", fi.Length.ToString(), "\t", fi.LastWriteTime.ToString("yyyyMMddHHmmss")));
             }
 
             return list;
@@ -202,39 +193,46 @@ namespace ChangeIndexer
 
         private static void BuildMergeDiff(List<string> oldEntries, List<string> newEntries, StringBuilder sb)
         {
+            // Pre-extract paths to avoid repeated Substring calls in the merge loop
+            var oldPaths = new string[oldEntries.Count];
+            for (int i = 0; i < oldEntries.Count; i++)
+                oldPaths[i] = ExtractPath(oldEntries[i]);
+
+            var newPaths = new string[newEntries.Count];
+            for (int i = 0; i < newEntries.Count; i++)
+                newPaths[i] = ExtractPath(newEntries[i]);
+
             int io = 0, in_ = 0;
             while (io < oldEntries.Count && in_ < newEntries.Count)
             {
-                var oldPath = ExtractPath(oldEntries[io]);
-                var newPath = ExtractPath(newEntries[in_]);
-                int cmp = string.Compare(oldPath, newPath, StringComparison.Ordinal);
+                int cmp = string.Compare(oldPaths[io], newPaths[in_], StringComparison.Ordinal);
 
                 if (cmp == 0)
                 {
                     if (oldEntries[io] != newEntries[in_])
-                        sb.Append('~').Append(newPath).Append('\n');
+                        sb.Append('~').Append(newPaths[in_]).Append('\n');
                     io++;
                     in_++;
                 }
                 else if (cmp < 0)
                 {
-                    sb.Append('-').Append(oldPath).Append('\n');
+                    sb.Append('-').Append(oldPaths[io]).Append('\n');
                     io++;
                 }
                 else
                 {
-                    sb.Append('+').Append(newPath).Append('\n');
+                    sb.Append('+').Append(newPaths[in_]).Append('\n');
                     in_++;
                 }
             }
             while (io < oldEntries.Count)
             {
-                sb.Append('-').Append(ExtractPath(oldEntries[io])).Append('\n');
+                sb.Append('-').Append(oldPaths[io]).Append('\n');
                 io++;
             }
             while (in_ < newEntries.Count)
             {
-                sb.Append('+').Append(ExtractPath(newEntries[in_])).Append('\n');
+                sb.Append('+').Append(newPaths[in_]).Append('\n');
                 in_++;
             }
         }
@@ -244,10 +242,9 @@ namespace ChangeIndexer
             if (patterns.Length == 0)
                 return false;
 
-            var lower = relativePath.ToLowerInvariant();
             foreach (var pattern in patterns)
             {
-                if (lower.Contains(pattern))
+                if (relativePath.Contains(pattern, StringComparison.OrdinalIgnoreCase))
                     return true;
             }
 
