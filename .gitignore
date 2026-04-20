@@ -1,0 +1,22 @@
+# OneScript зависимости
+oscript_modules/
+
+# .NET build artifacts
+src/obj/
+src/bin/
+
+# Тестовые данные
+test_folder/
+
+# Файлы индекса
+*.cidx
+
+# IDE
+.vscode/
+*.swp
+*~
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

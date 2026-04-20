@@ -1,0 +1,168 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "1script_change_indexer/1.0.0": {
+        "dependencies": {
+          "OneScript": "2.0.0-rc.7",
+          "OneScript.CoreLib": "2.0.0-rc.7",
+          "OneScript.StandardLibrary": "2.0.0-rc.7"
+        },
+        "runtime": {
+          "1script_change_indexer.dll": {}
+        }
+      },
+      "DotNetZip/1.13.3": {
+        "dependencies": {
+          "System.Security.Permissions": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DotNetZip.dll": {
+            "assemblyVersion": "1.13.3.0",
+            "fileVersion": "1.13.3.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
+          }
+        }
+      },
+      "OneScript/2.0.0-rc.7": {
+        "dependencies": {
+          "OneScript.CoreLib": "2.0.0-rc.7",
+          "OneScript.Language": "2.0.0-rc.7",
+          "OneScript.Native": "2.0.0-rc.7"
+        },
+        "runtime": {
+          "lib/net6.0/ScriptEngine.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "OneScript.CoreLib/2.0.0-rc.7": {
+        "dependencies": {
+          "OneScript.Language": "2.0.0-rc.7"
+        },
+        "runtime": {
+          "lib/net6.0/OneScript.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "OneScript.Language/2.0.0-rc.7": {
+        "runtime": {
+          "lib/net6.0/OneScript.Language.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "OneScript.Native/2.0.0-rc.7": {
+        "dependencies": {
+          "OneScript.CoreLib": "2.0.0-rc.7",
+          "OneScript.Language": "2.0.0-rc.7"
+        },
+        "runtime": {
+          "lib/net6.0/OneScript.Native.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "OneScript.StandardLibrary/2.0.0-rc.7": {
+        "dependencies": {
+          "DotNetZip": "1.13.3",
+          "Newtonsoft.Json": "13.0.2",
+          "OneScript": "2.0.0-rc.7"
+        },
+        "runtime": {
+          "lib/net6.0/OneScript.StandardLibrary.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "System.Security.Permissions/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "1script_change_indexer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DotNetZip/1.13.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-URP6Eo8RZ9E8MapQaRDu2Sa7oWf+0M7OrZGPM4H22P64oMiGfGIh7gJqUVX2CBR0i5zjvDvOIwKwHDHLLL6w3Q==",
+      "path": "dotnetzip/1.13.3",
+      "hashPath": "dotnetzip.1.13.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
+    },
+    "OneScript/2.0.0-rc.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LJQumwuu35nCghFyPIoE9geEK10WEUypoERaPQ7rlTaQNXcR3TS9km+PrHFCOb88qZtdzpK18OLMxqvsgGWhXA==",
+      "path": "onescript/2.0.0-rc.7",
+      "hashPath": "onescript.2.0.0-rc.7.nupkg.sha512"
+    },
+    "OneScript.CoreLib/2.0.0-rc.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A2iy0EkvtVQHWm/S3maTkj+anwyydI25+GxKlNazrBE0h4iLEQWOLpW6nDHkYI4JHS/pOCh3EcldaXUty6kBAw==",
+      "path": "onescript.corelib/2.0.0-rc.7",
+      "hashPath": "onescript.corelib.2.0.0-rc.7.nupkg.sha512"
+    },
+    "OneScript.Language/2.0.0-rc.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7zzpsiNFieuHbhyktgsPXg9cv5LMt+IVFBjVO3bONGDwa3iwkguVYCAfOvUj/913UHJAryEVBL4ipypr/YSFDw==",
+      "path": "onescript.language/2.0.0-rc.7",
+      "hashPath": "onescript.language.2.0.0-rc.7.nupkg.sha512"
+    },
+    "OneScript.Native/2.0.0-rc.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8X8aU/Nk4Ss7vtRp9jEoyWwmOLA2rA3m1iCRGmvkfUxZBC+3z7Kidrp4uooemQx8deUdUmXRioCnsGlvIlIXIg==",
+      "path": "onescript.native/2.0.0-rc.7",
+      "hashPath": "onescript.native.2.0.0-rc.7.nupkg.sha512"
+    },
+    "OneScript.StandardLibrary/2.0.0-rc.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g01gDNhBjHR/dzgXoQTr3XQozKZRmizX/HTW+vurIDixUYEgmEYhw8Pxn9ruEfQY+pD4Kr1JTPb4HjJUl3+OAg==",
+      "path": "onescript.standardlibrary/2.0.0-rc.7",
+      "hashPath": "onescript.standardlibrary.2.0.0-rc.7.nupkg.sha512"
+    },
+    "System.Security.Permissions/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
+      "path": "system.security.permissions/4.5.0",
+      "hashPath": "system.security.permissions.4.5.0.nupkg.sha512"
+    }
+  }
+}
